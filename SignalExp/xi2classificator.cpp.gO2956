@@ -1,0 +1,189 @@
+#ifndef SIGNAL_CLASSIFICATION
+#define SIGNAL_CLASSIFICATION
+
+#include <QVector>
+#include <QtMath>
+#include "msg.h"
+#include "res.h"
+#include "xi2classificator.h"
+
+Xi2Classificator::Xi2Classificator(){
+}
+
+Xi2Classificator::~Xi2Classificator(){
+}
+
+VecF32 Xi2Classificator::scale(const VecF32 &x, float minY, float  maxY) const {
+    if (!x.size()) return VecF32();
+    VecF32 y; y.resize(x.size());
+    float minX = x[0];
+    float maxX = x[0];
+    for (int i = 1; i<x.size(); i++)
+        if (x[i]>maxX)      maxX = x[i];
+        else if (x[i]<minX) minX = x[i];
+    float dX = maxX-minX;
+    float dY = maxY-minY;
+    for (int i = 0; i<x.size(); i++)
+        y[i] = (x[i]-minX)*dY/dX + minY;
+
+    //qDebug()<<"stat: minX "<<minX<<" maxX "<<maxX<<" minY "<<minY<<" maxY "<<maxY<<" dX "<<dX<< " dY "<<dY;
+    //qDebug()<<"x "; for (int i=0; i<10; ++i) qDebug()<<x[i];
+    //qDebug()<<"y "; for (int i=0; i<10; ++i) qDebug()<<y[i];
+    //qDebug()<<"---------------";
+
+    return y;
+}
+
+QVector<VecF32> Xi2Classificator::scale(const QVector< VecF32 > &x, float minY, float maxY) const {
+    QVector<VecF32> sc; sc.reserve(x.size());
+    for (int i=0; i<x.size(); ++i)
+        sc.push_back(scale(x[i],minY,maxY));
+    return sc;
+ }
+
+VecF32 Xi2Classificator::mean(const QVector< VecF32 > &data) const {
+    if (!data.size()) return VecF32();
+    int nsamp = data.size();
+    int n = data[0].size();
+    VecF32 a(n,0.0);
+    for (int i=0; i<n; ++i) {
+        for (int j = 0;  j<nsamp; j++) a[i] += data[j][i];
+        a[i]/=nsamp;
+    }
+    return a;
+}
+
+
+VecF32 Xi2Classificator::stdev(const QVector< VecF32 > &data, const VecF32 &mean) const {
+    if (!data.size()) return VecF32();
+    int nsamp = data.size();
+    int n = data[0].size();
+    VecF32 d(n,0.0);
+    for (int i=0; i<n; ++i) {
+        for (int j=0; j<nsamp; ++j) { float v = (data[j][i]-mean[i]); d[i] += v*v; }
+        d[i]= sqrt(d[i]/nsamp);
+    }
+    return d;
+}
+
+
+float Xi2Classificator::xi2(const VecF32 &mean, const VecF32 &disp, const VecF32 &x) const {
+    float y = 0.0f;
+    for (int i=0; i<x.size(); ++i)
+        y += pow((x[i]-mean[i])/disp[i],2);
+    return y;
+}
+
+
+
+//Получить порог для значения хи-квадрат по обучающей выборке
+//Для получения наиулучшего результата необходимо выбрать как минимум 20 образов, желательно 100
+float Xi2Classificator::xi2threshold(const QVector< VecF32 > &data) const {
+    int nsamp = data.size();
+    VecF32 a = mean(data);
+    VecF32 d = stdev(data,a);
+
+    qDebug()<<"----------";
+    qDebug()<<"a: "; for (int i=0; i<10; ++i)    qDebug()<<a[i];
+    qDebug()<<"d: "; for (int i=0; i<10; ++i)    qDebug()<<d[i];
+
+    float threshold=-1000.0;
+    for (int j=0; j<nsamp; ++j){
+        float x = xi2(a,d,data[j]);
+        if (x > threshold) threshold = x; //максимальный среди всех примеров
+    }
+    return threshold;
+}
+
+
+
+void Xi2Classificator::rescale(VecF32 &x, VecF32 &y, int nfrom, int nto) const {
+    VecF32 destx(nto);
+    VecF32 desty(nto);
+    float scale = nfrom/(float)nto;    // коэффициент масштабирования
+    float rel = 0.0f;
+    for(int i = 1; i < nto-1; i++){
+        rel += scale;
+        //Вычисление целочисленных индексов, близких к rel
+        int l = (int)rel;       // меньший индекс
+        int r = (int)rel + 1;   // больший индекс
+        // Вычисление масштабированных координат (линейная интерполяция)
+        if( r < (int)nfrom){
+            destx[i] = ((rel - l)*x[r] + (r - rel)*x[l]);
+            desty[i] = ((rel - l)*y[r] + (r - rel)*y[l]);
+        } else {
+            destx[i] = ((rel - l)*x[nfrom-1] + (r - rel)*destx[i-1]);
+            desty[i] = ((rel - l)*y[nfrom-1] + (r - rel)*desty[i-1]);
+        }
+    }
+    // Первые и последние координаты остаются без изменений
+    destx[0] = x[0];
+    desty[0] = y[0];
+    destx[nto-1] = x[nfrom-1];
+    desty[nto-1] = y[nfrom-1];
+    x = destx;
+    y = desty;
+}
+
+
+int Xi2Classificator::fit(const QVector<QVector< VecF32 > > &x, const QVector< VecF32 > &y){
+    if (x.count()==0) return -1;
+
+    qDebug()<<"x[0][0][0]:"<<x[0][0][0];
+
+    QVector< VecF32 > data = scale(x[0],-1.0,1.0);
+
+    qDebug()<<"scale[0][0]:"<<data[0][0];
+
+    _mean = mean(data);
+    _disp = stdev(data,_mean);
+
+
+    _xi2  = xi2threshold(data);  //вычислить порог xi2
+
+    qDebug()<<"mean:"<<_mean[0];
+    qDebug()<<"std:"<<_disp[0];
+    qDebug()<<"xi2:"<<_xi2;
+    qDebug()<<"fit";
+    //Msg::info(STR_RES("Классификатор mean %1 disp %2 (порог: %3)").arg(_mean[0]).arg(_disp[0]).arg(_xi2));
+
+    return 0;
+}
+
+
+int Xi2Classificator::test(const VecF32 &x, VecF32 &y) const {
+    y.resize(1);
+    VecF32 data = scale(x,-1.0,1.0);
+    float val = xi2(_mean,_disp,data);
+    qDebug()<<val;
+    //Msg::info(STR_RES("val %1").arg(val));
+    if (val <_xi2) y[0]=0.0f;
+    else           y[0]=1.0f;
+    return 1;
+}
+
+
+
+SigClassificator::Descr Xi2Classificator::getStaticDescr(){
+    Descr d = {
+        1,      //int     classes;    //максимальное число классов
+        1000000,//int     sizeX;      //число входов
+        1,      //int     sizeY;      //число выходов
+        true,   //bool    autoY;      //автоматическое назначение значений
+        false,  //bool    foreignClassEnabled;    //разрешен класс "ВсеЧужие" без явного значения Y
+        DiscreteValue,   //YFormat formatY;
+        STR_RES("Хи квадрат"),
+        STR_RES("xi2")
+    };
+    return d;
+}
+
+
+
+SigClassificator::Descr Xi2Classificator::getDescr() const{
+    return getStaticDescr();
+}
+
+#endif // SIGNAL_CLASSIFICATION
+
+

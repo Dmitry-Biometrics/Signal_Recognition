@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DlgNNet</class>
+ <widget class="QDialog" name="DlgNNet">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>568</width>
+    <height>316</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Нейросетевой классификатор</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="spacing">
+    <number>3</number>
+   </property>
+   <property name="leftMargin">
+    <number>3</number>
+   </property>
+   <property name="topMargin">
+    <number>3</number>
+   </property>
+   <property name="rightMargin">
+    <number>3</number>
+   </property>
+   <property name="bottomMargin">
+    <number>3</number>
+   </property>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tabFit">
+        <attribute name="title">
+         <string>Обучение</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <item row="0" column="1">
+          <layout class="QGridLayout" name="gridLayout">
+           <property name="spacing">
+            <number>3</number>
+           </property>
+           <item row="2" column="2">
+            <layout class="QHBoxLayout" name="horizontalLayout" stretch="80,0,10">
+             <property name="spacing">
+              <number>3</number>
+             </property>
+             <item>
+              <widget class="QComboBox" name="cbReduceRule">
+               <item>
+                <property name="text">
+                 <string>Не прореживать</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Прореживать с q&lt;q_mean</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Прореживать с q&lt;Q</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>Q=</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDoubleSpinBox" name="edQ"/>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="2">
+            <widget class="QDoubleSpinBox" name="edConnPercent">
+             <property name="value">
+              <double>50.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Алгоритм создания откликов</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QComboBox" name="cbYCodeRule">
+             <item>
+              <property name="text">
+               <string>Номер класса 0,1,2... -1</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Бинарный код {00,01,10,11}</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Вероятностный код {0001,0010,0100,1000}</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Тип сети</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Прореживание связей</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Связанность первого слоя, %</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QComboBox" name="cbNetType">
+             <item>
+              <property name="text">
+               <string>ГОСТ x</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>ГОСТ x^2</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>ГОСТ x^.5</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>ГОСТ x - ГОСТ x</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tabTest">
+        <attribute name="title">
+         <string>Тестирование</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="0" column="0">
+          <layout class="QGridLayout" name="gridLayout_3">
+           <property name="spacing">
+            <number>3</number>
+           </property>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Результаты обучения: ожидание | отклонение | код</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="cbTestRule">
+             <item>
+              <property name="text">
+               <string>По мере Хэмминга от m Свой</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Попадание в диапазон Свой [m-2s;m+2s]</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>По распределению Свой (m,s)</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>Оценка близости к эталону</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QTableWidget" name="msy">
+             <property name="columnCount">
+              <number>3</number>
+             </property>
+             <column>
+              <property name="text">
+               <string>отклик</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>ожидание</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>отклонение</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

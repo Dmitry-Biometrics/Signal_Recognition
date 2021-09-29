@@ -1,0 +1,80 @@
+#ifndef SIGCLASSIFICATOR_H
+#define SIGCLASSIFICATOR_H
+
+#include <QObject>
+#include <QStringList>
+#include <QVector>
+
+class SigClassificator: public QObject {
+    Q_OBJECT
+public:
+    SigClassificator(){}
+    virtual ~SigClassificator(){}
+
+    virtual QVector< QVector<float> > labes() const { return _y; }      //эталонные отклики
+
+    virtual int batchSize() const { return _batch; }
+    virtual float testPerc() const { return _perc;  }
+    virtual int epoch() const     { return _epoch; }
+
+
+    virtual void setBatchSize(int value){ _batch = value; }    //установка размера выборки
+    virtual void setTestPerc(float percent){ _perc = percent; }//установка процента тестовых данных (от обучающей выборки)
+    virtual void setEpoch(int value) { _epoch = value; }       //установка числа эпох (если обучается нейронная сеть)
+    virtual void config(QWidget *parent=0){} //настроить дополнительные параметры в отдельном диалоге
+
+    //Обучение
+    //  x[класс][пример][параметр]  входные данные
+    //  y[класс][параметр]          ожидаемые отклики (если отклик пустой, то ожидается любое значение, кроме уже использованных)
+    //возвращает результат обучения: 0 - успешно
+    virtual int fit(QVector< QVector< QVector<float> > > &x, QVector< QVector<float> > &y){ return -1; }
+
+    //Тестирование
+    //  x[параметр]
+    //  y[параметр]
+    //возвращает: номер класса
+    virtual int test(QVector<float> &x, QVector<float> &y) { return -1; }
+
+Q_SIGNALS:
+
+    void onEpoch(const QStringList &report);
+
+protected:
+    QVector<QVector<float> > _y;     //эталонные отклики, соотв. классам
+
+    int _batch;
+    int _perc;
+    int _epoch;
+};
+
+
+
+/*
+void SignalSamples::readParams(const QString &path, QVector<float> &sample)
+{
+    QTextStream stream;
+    QFile file(path);
+    if (file.open(QIODevice::ReadOnly)) {
+        stream.setDevice(&file);
+        while (!stream.atEnd()) {
+            QString str = stream.readLine();
+            if (!str.isEmpty()) sample.push_back(str.toFloat());
+        }
+        file.close();
+    }
+}
+
+void SignalSamples::loadBase(const QFileInfoList &fileList, QVector<QVector<float> > &base)
+{
+    foreach(QFileInfo files, fileList){
+        QString fileName = files.filePath();
+        QVector<float> sample;
+        QVector<float> s;
+        readParams(fileName, sample);
+        base.push_back(sample);
+    }
+}
+
+*/
+
+#endif // SIGNALCLASSIFICATOR_H

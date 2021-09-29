@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>788</width>
+    <height>707</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Макет СТ-Опора</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>3</number>
+    </property>
+    <property name="topMargin">
+     <number>3</number>
+    </property>
+    <property name="rightMargin">
+     <number>3</number>
+    </property>
+    <property name="bottomMargin">
+     <number>3</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,6">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,4,0,6,0,0">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Классификаторы</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="cbClassif"/>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Данные и результаты</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTreeWidget" name="tw">
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <column>
+           <property name="text">
+            <string>группы</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>эл</string>
+           </property>
+          </column>
+          <item>
+           <property name="text">
+            <string>данные</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>0</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>хорошие</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>плохие</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>другие</string>
+             </property>
+            </item>
+           </item>
+           <item>
+            <property name="text">
+             <string>1</string>
+            </property>
+            <item>
+             <property name="text">
+              <string>хорошие</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>плохие</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>другие</string>
+             </property>
+            </item>
+           </item>
+           <item>
+            <property name="text">
+             <string>все</string>
+            </property>
+           </item>
+          </item>
+          <item>
+           <property name="text">
+            <string>обучение</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QToolButton" name="btnAddGroup">
+            <property name="minimumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Добавить группу</string>
+            </property>
+            <property name="text">
+             <string>+G</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnDelGroup">
+            <property name="minimumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Удалить группу</string>
+            </property>
+            <property name="text">
+             <string>-G</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnRenameGroup">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>RnG</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnUpLevelGroup">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>MlG</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnUpGroup">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>MuG</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnDownGroup">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>MdG</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="lw">
+          <property name="alternatingRowColors">
+           <bool>false</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::ExtendedSelection</enum>
+          </property>
+          <property name="horizontalScrollMode">
+           <enum>QAbstractItemView::ScrollPerItem</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <property name="spacing">
+           <number>3</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="btnAddSamples">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>+ Добавить пример(ы)</string>
+            </property>
+            <property name="text">
+             <string>+</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnAddDir">
+            <property name="minimumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Добавить каталог примеров</string>
+            </property>
+            <property name="text">
+             <string>+D</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnInvSelectedItem">
+            <property name="minimumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>/ Инвертировать выделение</string>
+            </property>
+            <property name="text">
+             <string>/</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnDelSamples">
+            <property name="minimumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Del, Удалить выделенные (все) примеры</string>
+            </property>
+            <property name="text">
+             <string>-</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnExportSamples">
+            <property name="minimumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Сохранить в файл (файлы)</string>
+            </property>
+            <property name="text">
+             <string>&gt;&gt;</string>
+            </property>
+            <property name="popupMode">
+             <enum>QToolButton::DelayedPopup</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnValue">
+            <property name="minimumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Зн</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>3</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="btnSelectSamples">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>выбрать</string>
+            </property>
+            <property name="checkable">
+             <bool>false</bool>
+            </property>
+            <property name="popupMode">
+             <enum>QToolButton::InstantPopup</enum>
+            </property>
+            <property name="autoRaise">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnCopySamples">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>копировать в</string>
+            </property>
+            <property name="popupMode">
+             <enum>QToolButton::DelayedPopup</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>3</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="btnGenerate">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Создать</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnTrain">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Обучить</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnClassifConfig">
+            <property name="minimumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>..</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnTest">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Тестировать</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnMark">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Маркировать</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>Группа</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnShowCurve">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>График</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnShowLog">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Лог</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="btnClearLog">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>ОчЛог</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <widget class="QCheckBox" name="chPlotFix">
+            <property name="text">
+             <string>фикс. оси</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbColor">
+            <property name="minimumSize">
+             <size>
+              <width>16</width>
+              <height>16</height>
+             </size>
+            </property>
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tbColor">
+            <property name="text">
+             <string>цвет</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tbLockCurve">
+            <property name="text">
+             <string>+фикс</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tbClearCurve">
+            <property name="text">
+             <string>очистить</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tbOnTop">
+            <property name="text">
+             <string>вверх</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="tbOnBottom">
+            <property name="text">
+             <string>вниз</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QCustomPlot" name="plot" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>200</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="log"/>
+        </item>
+        <item>
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="txtLabel">
+          <property name="text">
+           <string>Класс:</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="txtY">
+          <property name="text">
+           <string>Отклик:</string>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>788</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>&amp;Файл</string>
+    </property>
+    <addaction name="action_12"/>
+    <addaction name="action_13"/>
+    <addaction name="action_14"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Примеры</string>
+    </property>
+    <addaction name="mnInverse"/>
+    <addaction name="mnMark"/>
+    <addaction name="separator"/>
+    <addaction name="mnGenSeq"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>Группы</string>
+    </property>
+    <addaction name="action_19"/>
+    <addaction name="action_20"/>
+   </widget>
+   <widget class="QMenu" name="menu_6">
+    <property name="title">
+     <string>Классификаторы</string>
+    </property>
+    <widget class="QMenu" name="menu_7">
+     <property name="title">
+      <string>Обучить</string>
+     </property>
+     <addaction name="action_23"/>
+     <addaction name="action_24"/>
+     <addaction name="action_25"/>
+     <addaction name="action_26"/>
+     <addaction name="action_27"/>
+    </widget>
+    <addaction name="menu_7"/>
+    <addaction name="mnTest"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>Обработка</string>
+    </property>
+    <widget class="QMenu" name="menu_4">
+     <property name="title">
+      <string>Объединить и перенести в x</string>
+     </property>
+     <addaction name="mnUniteYAndCopyToX"/>
+     <addaction name="mnUniteLb0AndCopyToX"/>
+     <addaction name="mnUniteLb1AndCopyToX"/>
+    </widget>
+    <addaction name="mnPrScale"/>
+    <addaction name="mnPrNorm"/>
+    <addaction name="mnPrMean"/>
+    <addaction name="mnAddNoise"/>
+    <addaction name="mnEnergy"/>
+    <addaction name="mnUnOp2"/>
+    <addaction name="mnBinOp"/>
+    <addaction name="menu_4"/>
+    <addaction name="mnFurie"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_5"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_6"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="action">
+   <property name="text">
+    <string>Создать</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>Удалить группу</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>Добавить пример(ы)</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>Удалить пример(ы)</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>Добавить каталог</string>
+   </property>
+  </action>
+  <action name="action_8">
+   <property name="text">
+    <string>Создать..</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="text">
+    <string>Удалить выделенные</string>
+   </property>
+  </action>
+  <action name="action_11">
+   <property name="text">
+    <string>Добавить пример(ы) из файла</string>
+   </property>
+  </action>
+  <action name="action_12">
+   <property name="text">
+    <string>Загрузить из файлов..</string>
+   </property>
+  </action>
+  <action name="action_13">
+   <property name="text">
+    <string>Загрузить из каталога..</string>
+   </property>
+  </action>
+  <action name="action_14">
+   <property name="text">
+    <string>Сохранить в файл(ы)..</string>
+   </property>
+  </action>
+  <action name="action_15">
+   <property name="text">
+    <string>Инвертировать выделение</string>
+   </property>
+  </action>
+  <action name="mnSelectAll">
+   <property name="text">
+    <string>Выделить все</string>
+   </property>
+  </action>
+  <action name="mnInverse">
+   <property name="text">
+    <string>Инвертировать выделение</string>
+   </property>
+  </action>
+  <action name="mnMark">
+   <property name="text">
+    <string>Маркировать</string>
+   </property>
+  </action>
+  <action name="action_19">
+   <property name="text">
+    <string>Добавить новую</string>
+   </property>
+  </action>
+  <action name="action_20">
+   <property name="text">
+    <string>Удалить выделенную</string>
+   </property>
+  </action>
+  <action name="mnTest">
+   <property name="text">
+    <string>Тестировать</string>
+   </property>
+  </action>
+  <action name="action_23">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Хи квадрат</string>
+   </property>
+  </action>
+  <action name="action_24">
+   <property name="text">
+    <string>Евклид</string>
+   </property>
+  </action>
+  <action name="action_25">
+   <property name="text">
+    <string>Норм. Евклид</string>
+   </property>
+  </action>
+  <action name="action_26">
+   <property name="text">
+    <string>Опорные вектора</string>
+   </property>
+  </action>
+  <action name="action_27">
+   <property name="text">
+    <string>Биометрия-код</string>
+   </property>
+  </action>
+  <action name="action_28">
+   <property name="text">
+    <string>Копировать</string>
+   </property>
+  </action>
+  <action name="mnPrScale">
+   <property name="text">
+    <string>Масштабировать...</string>
+   </property>
+  </action>
+  <action name="mnPrNorm">
+   <property name="text">
+    <string>Нормировать...</string>
+   </property>
+  </action>
+  <action name="mnPrMean">
+   <property name="text">
+    <string>Моменты..</string>
+   </property>
+  </action>
+  <action name="mnPrDev">
+   <property name="text">
+    <string>Отклонение</string>
+   </property>
+  </action>
+  <action name="mnPrSub">
+   <property name="text">
+    <string>Вычесть</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>neg</string>
+   </property>
+  </action>
+  <action name="action_10">
+   <property name="text">
+    <string>abs</string>
+   </property>
+  </action>
+  <action name="mnBinOp">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>y=op(x,y)</string>
+   </property>
+  </action>
+  <action name="mnUnOp2">
+   <property name="text">
+    <string>y=op(x)</string>
+   </property>
+  </action>
+  <action name="mnUniteYAndCopyToX">
+   <property name="text">
+    <string>отклики</string>
+   </property>
+  </action>
+  <action name="mnUniteLb0AndCopyToX">
+   <property name="text">
+    <string>метки 0</string>
+   </property>
+  </action>
+  <action name="mnUniteLb1AndCopyToX">
+   <property name="text">
+    <string>метки 1</string>
+   </property>
+  </action>
+  <action name="mnGenSeq">
+   <property name="text">
+    <string>Сгенерировать последовательность..</string>
+   </property>
+  </action>
+  <action name="mnEnergy">
+   <property name="text">
+    <string>Среднеквадр. амплитуды</string>
+   </property>
+  </action>
+  <action name="mnAddNoise">
+   <property name="text">
+    <string>Наложить шум(сигнал)...</string>
+   </property>
+  </action>
+  <action name="mnFurie">
+   <property name="text">
+    <string>Перевести в частотную область</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
