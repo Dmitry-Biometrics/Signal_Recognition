@@ -23,6 +23,8 @@ The program is launched by launching the installed SignalExp application from th
 3.3. Main window and menu of the program
 
 The main window is shown in Figure 1.
+![image](https://user-images.githubusercontent.com/16018075/135731628-01a9e547-62bf-4dda-886d-74ab2521ccac.png)
+
 
  
 The window includes the following areas:
@@ -36,6 +38,8 @@ The window includes the following areas:
 
 The menu area is for activating specialized software functions. The main menu of the program includes the following submenus: "File", "Groups", "Examples", "Processing", "Classifiers".
     
+ ![image](https://user-images.githubusercontent.com/16018075/135731641-84a20ca7-314e-415a-94a6-da86171b7680.png)
+
      
 The File submenu allows you to add data from various sources, save examples to one or more files, and exit the program.
 The "Groups" submenu is designed to manage groups, namely, to create a new and delete a previously created group.
@@ -46,12 +50,14 @@ The "Classifiers" area contains a list of classifiers trained since the start of
 The "Groups" area displays the loaded sets of examples in a tree-like form (Fig. 3). The operations of adding a new group ("G +" button) and deleting the selected group ("G-" button) are supported. In addition, this panel contains a button for marking examples (that is, assigning them to one of the classes for training or according to the results of training).
  
  
- 
+ ![image](https://user-images.githubusercontent.com/16018075/135731655-f3221a7d-eb1c-478e-a7a6-64a5d44974d6.png)
+
 Fig. 3
 The Examples area contains a list of examples (signals) included in the group selected in the Data and Results tree. The area is shown in Fig. 4.
  
  
- 
+ ![image](https://user-images.githubusercontent.com/16018075/135731659-2bc81d88-4d1b-40ef-b070-645e4b13cf21.png)
+
 Fig. 4.
 
 The main buttons for managing the lists of examples are also located here:
@@ -73,7 +79,8 @@ The "Button Panel" area contains buttons that implement the main functionality o
 - setting the parameters of the classifier after the completion of training (button "...");
  
  
- 
+ ![image](https://user-images.githubusercontent.com/16018075/135731666-3a6f5013-e1de-4535-9a97-f06f600b26cb.png)
+
 Fig. 5
 - testing the trained classifier on the selected examples (button "Test");
 - control over the visibility of the chart area (the "Chart" button);
@@ -83,7 +90,8 @@ Fig. 5
 The area of graphs is intended for displaying the data of an example (signal) in the form of a graph (Fig. 6.). It directly contains the area for drawing graphs of signals - along the X axis, the signal counts are plotted (one value - one count), the Y-axis is the count value. By default, the graph is drawn for the example that is highlighted in the examples area. If more than one example is selected, only the first one is displayed. The buttons panel above the drawing area is used to control various display options.
  
  
- 
+ ![image](https://user-images.githubusercontent.com/16018075/135731672-23806448-e85c-4e7d-ac9b-9c04ea072647.png)
+
 Fig. 6
 The following actions can be performed using the drawing area button bar:
 - disabling the function of autoscaling the axes of the graphs according to the example data (checkbox "fixed axes");
@@ -98,5 +106,5 @@ The area for displaying text information is intended to display a report on the 
 - the "Response" field contains the value returned by the example classifier.
  
  
- 
+ ![image](https://user-images.githubusercontent.com/16018075/135731679-05e70e36-73f5-42db-b194-38caac344f51.png)
 Fig. 7
